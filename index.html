@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Conversation Intelligence</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./resources/css/font-awesome.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="./resources/css/font-awesome.css" />
+  <link rel="stylesheet" href="./resources/css/app.css" />
+</head>
+
+<body>
+  <div id="app">
+  </div>
+  <div class="convai">
+    <div class="convai-container">
+      <div class="convai-row" id='player'>
+        <div class="convai-speed-adjust">
+          <select name="speed-select" id="speed-select">
+            <option value="1.0x">1.0x</option>
+            <option value="2.0x">2.0x</option>
+            <option value="3.0x">3.0x</option>
+          </select>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="convai-share">
+          <button type="button">
+            <svg width="10px" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="share" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-share fa-w-18 fa-2x">
+              <path fill="currentColor"
+                d="M564.907 196.35L388.91 12.366C364.216-13.45 320 3.746 320 40.016v88.154C154.548 130.155 0 160.103 0 331.19c0 94.98 55.84 150.231 89.13 174.571 24.233 17.722 58.021-4.992 49.68-34.51C100.937 336.887 165.575 321.972 320 320.16V408c0 36.239 44.19 53.494 68.91 27.65l175.998-184c14.79-15.47 14.79-39.83-.001-55.3zm-23.127 33.18l-176 184c-4.933 5.16-13.78 1.73-13.78-5.53V288c-171.396 0-295.313 9.707-243.98 191.7C72 453.36 32 405.59 32 331.19 32 171.18 194.886 160 352 160V40c0-7.262 8.851-10.69 13.78-5.53l176 184a7.978 7.978 0 0 1 0 11.06z"
+                class=""></path>
+            </svg>
+            <span>Share</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="convai-row" id="sound-bar">        
+      </div>
+
+      <div class="convai-row">
+        <div class="convai-search-transcript">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" placeholder="Search call transcript" />
+        </div>
+      </div>
+      
+      <div class="convai-row transcript" id="convai-row transcript">
+        <!--  You Transcript -->
+        <div class="convai-transcript you">
+          <div class="convai-transcript__time you">
+            <span>10:53</span>
+          </div>
+          <div class="convai-transcript__text you">
+            <div><span>Lorem</span> <span>ipsum</span> dolor sit amet, consectetur adipisicing elit. Perspiciatis, dolorem praesentium?
+              Dignissimos animi enim excepturi nemo aliquam ratione nesciunt eaque facilis molestias repellat sed, nobis
+              voluptas, dolor dolores nostrum veritatis.</div>
+          </div>
+        </div>
+        <!--  Me Transcript -->
+        <div class="convai-transcript me">
+          <div></div>
+          <div class="convai-transcript__time me">
+            <span>10:53</span>
+          </div>
+          <div class="convai-transcript__text me">
+            <div><span>Lorem</span>  <span>ipsum</span> dolor sit amet, consectetur adipisicing elit. Perspiciatis, dolorem praesentium?
+              Dignissimos animi enim excepturi nemo aliquam ratione nesciunt eaque facilis molestias repellat sed, nobis
+              voluptas, dolor dolores nostrum veritatis.</div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  <script type="module" src="./app/app.js" defer></script>
+</body>
+
+</html>
