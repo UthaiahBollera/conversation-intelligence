@@ -67,7 +67,7 @@ class AudioPlayer {
       <img class="rewind" src="./resources/images/rewind.png" alt="rewind" />
     </div>
     <div class="convai-player-play" >
-      <img class="rewind" src="./resources/images/play.png" alt="play" />
+      <img class="play" src="./resources/images/play.png" alt="play" />
     </div>
     <div class="convai-player-forward" id="convai-player-forward" >
       <img class="forward--active" src="./resources/images/forward-active.png" alt="rewind" />
@@ -79,12 +79,19 @@ class AudioPlayer {
     this.player = playerDoc.querySelector('#audio-player');
     this.player.ontimeupdate = (evt) => {
       event.publish("ontimechanged", {
-        currentTime: Number(evt.target.currentTime).toFixed(1),
+        currentTime: evt.target.currentTime,
         duration: this.player.duration
       });
     };
     playerDoc.querySelector(".convai-player-play").addEventListener('click', () => {
       _this.togglePlayPause();
+      let ele = document.querySelector('img.play');
+      let [PLAYURL, PAUSEURL] = ['play.png', 'pause.png'];
+      if (ele.src.indexOf(PLAYURL) > 0) {
+        ele.src = "./resources/images/" + PAUSEURL;
+      } else {
+        ele.src = "./resources/images/" + PLAYURL;
+      }
     });
     playerDoc.querySelector('.rewind--active').addEventListener('click', () => {
       _this.rewind;

@@ -5,12 +5,6 @@ class SoundBar {
   constructor () {
   }
 
-  flatten(arr) {
-    return arr.reduce(function (flat, toFlatten) {
-      return flat.concat(Array.isArray(toFlatten) ? this.flatten(toFlatten) : toFlatten);
-    }, []);
-  }
-
   render() {
     let youbars = "";
     transcript.word_timings[0].forEach((time) => {
@@ -53,10 +47,10 @@ class SoundBar {
     eleDoc.querySelector('#time-calc').innerHTML = new timeUpdate().render();
     eleDoc.querySelector('.sound-wave').addEventListener("click", (evt) => {
       if (evt.target.className === "bar") {
-        let time = Number(evt.target.getAttribute('startTime').split('00')[0]);
+        let time = Number(evt.target.getAttribute('startTime').split('s')[0]);
         if (isFinite(time)) {
           event.publish('setTimer', {
-            currentTime: time
+            currentTime: Number(time).toFixed(2)
           });
         }
       }

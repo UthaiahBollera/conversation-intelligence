@@ -145,6 +145,7 @@ audio{
     padding-left: 10px;    
     border-left: solid 2px #c2dcf1;
     color: #556C86;    
+    cursor: pointer;
 }
 .convai-transcript__time {
     display: flex;
@@ -154,7 +155,6 @@ audio{
 .convai-transcript__time,.convai-transcript__text {
     align-items: flex-start;    
     display: flex;    
-    justify-content: flex-end;
 }
 .convai-transcript__time.you {
     color: #269ef6;
@@ -230,7 +230,7 @@ audio{
     height: 46px;
   }
   .sound-wave-connector{
-      width: 100%;      
+      width: 90%;      
       border: solid 1px #98a3b5;
   }
   .sound-wave-you .bar{
@@ -259,4 +259,13 @@ audio{
   .conv-percentage.me {
     color: #0792f0;
   }
+  .completing-time{
+    color: #8e969b;
+  }
   
+  .reading {
+    background: skyblue;
+    padding: 3px;
+    border-radius: 5px;
+    color: black;
+  }

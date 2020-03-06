@@ -4,7 +4,7 @@ import event from "../../event.js";
 class TimeUpdate {
   constructor () {
     event.subscribe('ontimechanged', (event) => {
-      document.querySelector('.running-time').innerHTML = event.currentTime;
+      document.querySelector('.running-time').innerHTML = Number(event.currentTime).toFixed(2);
       document.querySelector('.completing-time').innerHTML = event.duration;
     });
   }
