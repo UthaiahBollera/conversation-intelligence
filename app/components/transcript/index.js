@@ -19,7 +19,7 @@ class Trnascript {
     });
     wordTimings[1].forEach((time) => {
       if(time.word){
-        meText += `<span startTime=${time.startTime} endTime=${time.endTime}>${time.word} &nbsp;</span>`;
+        meText += `<span class=${"word"} startTime=${time.startTime} endTime=${time.endTime}>${time.word} &nbsp;</span>`;
       }
     });
 
