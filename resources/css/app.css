@@ -269,3 +269,13 @@ audio{
     border-radius: 5px;
     color: black;
   }
+
+  .word:hover {
+    background: #bde0fb;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 5px;
+  }
+  .convai-transcript:hover {
+    background: #f2fafe;
+   }
