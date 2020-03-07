@@ -2,6 +2,7 @@
 import event from "../../event.js";
 
 const [PLAYING, PAUSE, COMPLETED] = [1, 2, 3];
+let [PLAYURL, PAUSEURL] = ['play.png', 'pause.png'];
 let status = COMPLETED;
 
 class AudioPlayer {
@@ -15,6 +16,10 @@ class AudioPlayer {
       this.player.currentTime = time.currentTime;
       this.player.play();
     });
+
+    event.subscribe('onSpeedChange', (data) => {
+      this.setSpeed(Number(data.speed));
+    });
   }
 
   fastForward(e) {
@@ -27,6 +32,10 @@ class AudioPlayer {
 
   resetSpeed() {
     this.player.playbackRate = 1.0;
+  }
+
+  setSpeed(speed) {
+    this.player.playbackRate = speed;
   }
 
   togglePlayPause() {
@@ -50,6 +59,11 @@ class AudioPlayer {
         break;
     }
   };
+
+  setPlayURL(){
+    let ele = document.querySelector('img.play');
+    ele.src = "./resources/images/" + PLAYURL;
+  }
 
   render() {
     let _this = this;
@@ -76,6 +90,10 @@ class AudioPlayer {
     this.player.onloadeddata = () => {
       event.publish('onendtimechanged', this.player.duration);
     };
+    this.player.onended = () => {
+      this.setPlayURL();
+    };
+
     this.player.ontimeupdate = (evt) => {
       event.publish("ontimechanged", {
         currentTime: evt.target.currentTime,
