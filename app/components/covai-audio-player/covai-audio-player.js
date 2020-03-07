@@ -17,16 +17,12 @@ class AudioPlayer {
     });
   }
 
-  fastForward() {
-    this.player.playbackRate = 0.5;
-  }
-
-  fastForward() {
-    this.player.playbackRate = 0.5;
+  fastForward(e) {
+    this.player.currentTime = this.player.currentTime + 1;
   }
 
   rewind() {
-    this.player.playbackRate = -1.0;
+    this.player.currentTime = this.player.currentTime - 1;
   }
 
   resetSpeed() {
@@ -62,7 +58,7 @@ class AudioPlayer {
     playerDoc.id = "convai-player";
 
     playerDoc.innerHTML = `
-    <div class="convai-player-rewind">
+    <div class="convai-player-rewind" id="convai-player-rewind">
       <img class="rewind--active" src="./resources/images/rewind-active.svg" alt="rewind" />
       <img class="rewind" src="./resources/images/rewind.svg" alt="rewind" />
     </div>
@@ -86,6 +82,12 @@ class AudioPlayer {
         duration: this.player.duration
       });
     };
+    playerDoc.querySelector('#convai-player-forward').addEventListener('click', () => {
+      _this.fastForward();
+    });
+    playerDoc.querySelector('#convai-player-rewind').addEventListener('click', () => {
+      _this.rewind();
+    });
     playerDoc.querySelector(".convai-player-play").addEventListener('click', () => {
       _this.togglePlayPause();
       let ele = document.querySelector('img.play');
