@@ -7,6 +7,9 @@ class TimeUpdate {
       document.querySelector('.running-time').innerHTML = Number(event.currentTime).toFixed(2);
       document.querySelector('.completing-time').innerHTML = event.duration;
     });
+    event.subscribe('onendtimechanged',(time)=>{
+      document.querySelector('.completing-time').innerHTML = time;
+    });
   }
   render() {
     let duration = document.querySelector('#convai-player>audio').duration    

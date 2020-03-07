@@ -77,6 +77,9 @@ class AudioPlayer {
       <source src="./sounds//interation1.wav" type="audio/wav">
     </audio>`;
     this.player = playerDoc.querySelector('#audio-player');
+    this.player.onloadeddata = () => {
+      event.publish('onendtimechanged', this.player.duration);
+    };
     this.player.ontimeupdate = (evt) => {
       event.publish("ontimechanged", {
         currentTime: evt.target.currentTime,
