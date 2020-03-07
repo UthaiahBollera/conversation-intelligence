@@ -3,10 +3,22 @@
 @font-face{
     font-family: 'proxima-nova';
     src: url(./proxima.woff) format('woff');
+    font-weight: 300;
+}
+@font-face{
+    font-family: 'proxima-nova';
+    src: url(./proxima-regular.woff) format('woff');
     font-weight: 400;
+}
+@font-face{
+    font-family: 'proxima-nova';
+    src: url(./proxima-bold.woff) format('woff');
+    font-weight: 500;
 }
 body{
     background: #0000009c;
+    font-family: 'proxima-nova';
+    font-weight: 400;
 }
 audio{
     display: none;
@@ -43,12 +55,21 @@ audio{
     padding: 10px;
     border: solid 1px #d0d9e2;    
     font-size: 12px;
-    font-weight: 600;
+    font-family: 'proxima-nova';
+    font-weight: 500;
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 20px;
     outline: none;
     cursor: pointer;
+    color: #546c86;
+    letter-spacing: 0.3px;
+}
+.convai-share button:hover {
+    opacity: 0.8;
+}
+.convai-share svg {
+    margin-right: 3px;
 }
 .convai-player{
     grid-template-columns: auto auto auto;    
@@ -77,21 +98,12 @@ audio{
 
 .convai-player-rewind img, .convai-player-forward img{
     position: absolute;
-    width: 30px;
-    height: 26px;
+    width: 22px;
+    margin-top: -10px;
 }
-.convai-player-forward img {
-    height: 22px;
-    width: 26px;
-    margin-top: -11px;
-    margin-left: -32px;
-}
-.convai-player-rewind img {
-    margin-top: -13px;
-}
-.forward--active {
-    height: 25px !important;
-    width: 24px !important;
+
+.convai-player-forward {
+    margin-right: auto;
 }
 
 .convai-player:first-child, .convai-player:last-child{
@@ -101,29 +113,53 @@ audio{
     width: 40px;
     height: 20px;
     margin-top: 20px;
+    font-family: 'proxima-nova';
+    font-weight: 400;
 }
 .convai-speed-adjust > select{
-    border: none;
-    border-color: #d0d9e2;
+    border: 1px solid #d0d9e2;
+    color: #59718a;
+    font-family: 'proxima-nova';
+    font-weight: 500;
+    font-size: 13px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0 7px;
+    border-radius: 50px;
+    height: 22px;
+    line-height: 22px;
+    cursor: pointer;
+    background: #fcfdfd;
+}
+.convai-speed-adjust > select:hover {
+    background: #f2f6f6;
+}
+.convai-speed-adjust > select:focus {
+    outline: none;
 }
 .convai-row:nth-child(2){
     width: 930px;
-    height: 240px;
     border: dotted 1px #e4e4e4;
 }
 .convai-search-transcript{
     height: 34px;    
 }
 .convai-search-transcript > input{
-    padding: 10px;
+    padding: 10px 35px;
     width: 370px;
     border-radius: 5px;
     border: solid 1px #dfe3e9;
-    padding-left: 10px;
     font-size: 15px;
     outline: none;
     margin-left: 20px;
     font-family: 'proxima-nova';
+    background-image: url('../images/search.svg');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.convai-search-transcript > input:focus {
+    border: 1px solid #cbd1db;
 }
 .convai-search-transcript>input::placeholder{
     opacity: 0.5;
@@ -174,14 +210,14 @@ audio{
     font-size: 13px;
     font-family: 'proxima-nova';
     line-height: 20px;
-    font-weight: bold;
+    font-weight: 400;
     color: #556c86;
 }
 .convai-transcript {
     display: grid;
     grid-template-columns: 7% 93%;
     grid-gap: 10px;    
-    padding: 10px;
+    padding: 15px 10px;
     width: 700px;    
 }
 .convai-transcript.me {
@@ -193,15 +229,23 @@ audio{
     scrollbar-width: thin;
 }
 
-#time-calc{
-    width: 75px;
-    padding: 5px;
-    border-radius: 5px;
-    background: #f2f5f7;
-    margin-left: 40px;
-    margin-top: 15px;
+.convai-sound-bar {
+    padding: 20px;
 }
 
+#time-calc{
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: #f2f5f7;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.running-time {
+    color: #404b5c;
+}
 
 .sound-icon {    
     display: flex;
@@ -217,7 +261,7 @@ audio{
   .sound-wave .bar {
     display: block;
     width: 3px;
-    height: 40px;
+    height: 30px;
     margin-left: 1px;
     background: #8868e9;
     animation: sound 0ms -800ms linear infinite alternate;
@@ -236,15 +280,12 @@ audio{
   .sound-wave-you .bar{
       background: #0792f0;
   }
-  .sound-wave-me, .sound-wave-you, .sound-wave-connector{
-    margin-left: 20px;
-  }
   .sound-wave-me, .sound-wave-you{
     display: grid;
     grid-template-columns: 0.2fr 1fr;
   }
   .sound-wave-me{
-      margin-top:15px;
+      margin-top: 20px;
   }  
   
   .conv-percentage {
@@ -252,6 +293,9 @@ audio{
     color: #0792f0;
     display: flex;
     align-items: center;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    font-weight: 400;
   }
   .conv-percentage.you {
     color: #8868e9;

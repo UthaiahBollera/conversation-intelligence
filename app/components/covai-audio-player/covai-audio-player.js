@@ -63,15 +63,15 @@ class AudioPlayer {
 
     playerDoc.innerHTML = `
     <div class="convai-player-rewind">
-      <img class="rewind--active" src="./resources/images/rewind-active.png" alt="rewind" />
-      <img class="rewind" src="./resources/images/rewind.png" alt="rewind" />
+      <img class="rewind--active" src="./resources/images/rewind-active.svg" alt="rewind" />
+      <img class="rewind" src="./resources/images/rewind.svg" alt="rewind" />
     </div>
     <div class="convai-player-play" >
       <img class="play" src="./resources/images/play.png" alt="play" />
     </div>
     <div class="convai-player-forward" id="convai-player-forward" >
-      <img class="forward--active" src="./resources/images/forward-active.png" alt="rewind" />
-      <img class="forward" src="./resources/images/forward.png" alt="forward" />
+      <img class="forward--active" src="./resources/images/forward-active.svg" alt="rewind" />
+      <img class="forward" src="./resources/images/forward.svg" alt="forward" />
     </div>
     <audio controls id="audio-player">
       <source src="./sounds//interation1.wav" type="audio/wav">
