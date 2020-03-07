@@ -18,11 +18,11 @@ class AudioPlayer {
   }
 
   fastForward(e) {
-    this.player.currentTime = this.player.currentTime + 1;
+    this.player.currentTime = this.player.currentTime + 0.1;
   }
 
   rewind() {
-    this.player.currentTime = this.player.currentTime - 1;
+    this.player.currentTime = this.player.currentTime - 0.1;
   }
 
   resetSpeed() {
