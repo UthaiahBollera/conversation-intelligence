@@ -9,8 +9,18 @@ class SoundBar {
     event.subscribe("ontimechanged", (time) => {
       this.updateProgressbarWidth(Number(((time.currentTime * 9.5) + intialProgressbarState) + 4).toFixed(2));
     });
+    this.meSpokenLength = transcript.word_timings.filter((d,i)=>{return (i&1)}).flat().length;
+    this.youSpokenLength = transcript.word_timings.filter((d,i)=>{return !(i&1)}).flat().length;
   }
 
+  getYouSpokenPercentage() {
+    return Math.round((this.youSpokenLength / (this.meSpokenLength + this.youSpokenLength)) * 100);
+  }
+
+  getMeSpokenPercentage(){
+    return Math.round((this.meSpokenLength / (this.meSpokenLength + this.youSpokenLength)) * 100);
+  }
+  
   updateProgressbarWidth(progressWidth) {
     console.log("progressbar width", progressWidth);
     this.eleDoc.querySelector('#bar-progress >.container-bar').style.width = progressWidth + "px";
@@ -48,7 +58,7 @@ class SoundBar {
 <div class="bar-original">
 <div class="sound-wave-me">
     <div class="conv-percentage you">
-        54% You
+        ${this.getYouSpokenPercentage()}% You
     </div>
     <div id="wave">
         <div class='sound-icon '>
@@ -61,7 +71,7 @@ class SoundBar {
 <div class="sound-wave-connector"></div>
 <div class="sound-wave-you">
     <div class="conv-percentage me">
-        46% Michel
+        ${this.getMeSpokenPercentage()}% Michel
     </div>
     <div id="wave">
         <div class='sound-icon'>

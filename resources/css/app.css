@@ -223,7 +223,7 @@ audio{
     width: 100%;
 }
 .convai-transcript.me {
-    grid-template-columns: 2% 10% 90%;
+    grid-template-columns: 4% 10% 90%;
 }
 .transcript{
     height: 350px;
@@ -241,7 +241,7 @@ audio{
 } */
 .container-bar {    
     overflow: hidden;
-    border-right:solid 1px #354052 ;
+    border-right:solid 1px #bfc6d2 ;
 }
 .bar-original .sound-wave-connector{
     border: solid 0.5px #98a3b5;
