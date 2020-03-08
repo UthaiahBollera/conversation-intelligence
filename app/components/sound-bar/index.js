@@ -6,14 +6,26 @@ class SoundBar {
   }
 
   render() {
+    let marginLeft = 0;
     let youbars = "";
-    transcript.word_timings[0].forEach((time) => {
-      youbars += `<i class='bar' startTime=${time.startTime} endTime=${time.endTime}></i>`;
-    });
-
     let meBars = "";
-    transcript.word_timings[1].forEach((time) => {
-      meBars += `<i class='bar' startTime=${time.startTime} endTime=${time.endTime}></i>`;
+    transcript.word_timings.forEach((words, wordIndex) => {
+      if ((wordIndex & 1)) {//even bars        
+        console.log("even", words, marginLeft);
+        for (var evenIndex = 0; evenIndex < words.length; evenIndex++) {
+          let time = words[evenIndex];
+          youbars += `<i data-word="${time.word}" class='bar' style="margin-left: ${evenIndex == 0 ? marginLeft* 4.1 + "px;" : "none"}" startTime=${time.startTime} endTime=${time.endTime}></i>`;
+        }
+        marginLeft = evenIndex;        
+      } else {
+        console.log("odd", words, marginLeft* 4.1);
+        marginLeft *= 4.1
+        for (var oddIndex = 0; oddIndex < words.length; oddIndex++) {
+          let time = words[oddIndex];
+          meBars += `<i data-word="${time.word}" class='bar' style="margin-left: ${oddIndex == 0 ? marginLeft + "px;" : "none"}" startTime=${time.startTime} endTime=${time.endTime}></i>`;
+        }
+        marginLeft = oddIndex;
+      }
     });
     let eleDoc = document.createElement('div');
     eleDoc.className = "convai-sound-bar";
