@@ -88,7 +88,7 @@ class AudioPlayer {
     this.player = this.playerDoc.querySelector('#audio-player');
     
     this.player.onloadeddata = () => {
-      event.publish('onendtimechanged', this.player.duration);
+      event.publish('onEndTimeChanged', this.player.duration);
     };
 
     this.player.onended = () => {
@@ -96,7 +96,7 @@ class AudioPlayer {
     };
 
     this.player.ontimeupdate = (evt) => {
-      event.publish("ontimechanged", {
+      event.publish("onTimeChanged", {
         currentTime: evt.target.currentTime,
         duration: this.player.duration
       });

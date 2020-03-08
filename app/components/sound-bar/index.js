@@ -7,7 +7,7 @@ class SoundBar {
   constructor () {
     this.eleDoc = document.createElement('div');
     this.eleDoc.className = "convai-sound-bar";
-    event.subscribe("ontimechanged", (time) => {
+    event.subscribe("onTimeChanged", (time) => {
       this.updateProgressbarWidth(Number(((time.currentTime * 9.5) + intialProgressbarState) + 4).toFixed(2));
     });
     this.meSpokenLength = transcript.word_timings.filter((d,i)=>{return (i&1)}).flat().length;

@@ -13,7 +13,7 @@ class Trnascript {
       this.searchItem = data.searchItem || "";
       this.updateYouAndMeText();
     });
-    event.subscribe("ontimechanged", (time) => {
+    event.subscribe("onTimeChanged", (time) => {
       let styleString = `
       .word_${Number(time.currentTime).toFixed(1).toString().split('.').join('_')}{
         background: #bde0fb;
