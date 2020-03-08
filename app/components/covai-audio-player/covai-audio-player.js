@@ -62,7 +62,7 @@ class AudioPlayer {
 
   setPlayURL(){
     let ele = document.querySelector('img.play');
-    ele.src = "./resources/images/" + PLAYURL;
+    ele.src = "/app/resources/images/" + PLAYURL;
   }
 
   render() {
@@ -73,18 +73,18 @@ class AudioPlayer {
 
     playerDoc.innerHTML = `
     <div class="convai-player-rewind" id="convai-player-rewind">
-      <img class="rewind--active" src="./resources/images/rewind-active.svg" alt="rewind" />
-      <img class="rewind" src="./resources/images/rewind.svg" alt="rewind" />
+      <img class="rewind--active" src="/app/resources/images/rewind-active.svg" alt="rewind" />
+      <img class="rewind" src="/app/resources/images/rewind.svg" alt="rewind" />
     </div>
     <div class="convai-player-play" >
-      <img class="play" src="./resources/images/play.png" alt="play" />
+      <img class="play" src="/app/resources/images/play.png" alt="play" />
     </div>
     <div class="convai-player-forward" id="convai-player-forward" >
-      <img class="forward--active" src="./resources/images/forward-active.svg" alt="rewind" />
-      <img class="forward" src="./resources/images/forward.svg" alt="forward" />
+      <img class="forward--active" src="/app/resources/images/forward-active.svg" alt="rewind" />
+      <img class="forward" src="/app/resources/images/forward.svg" alt="forward" />
     </div>
     <audio controls id="audio-player">
-      <source src="./sounds//interation1.wav" type="audio/wav">
+      <source src="/app/sounds/interation1.wav" type="audio/wav">
     </audio>`;
     this.player = playerDoc.querySelector('#audio-player');
     this.player.onloadeddata = () => {
@@ -111,9 +111,9 @@ class AudioPlayer {
       let ele = document.querySelector('img.play');
       let [PLAYURL, PAUSEURL] = ['play.png', 'pause.png'];
       if (ele.src.indexOf(PLAYURL) > 0) {
-        ele.src = "./resources/images/" + PAUSEURL;
+        ele.src = "/app/resources/images/" + PAUSEURL;
       } else {
-        ele.src = "./resources/images/" + PLAYURL;
+        ele.src = "/app/resources/images/" + PLAYURL;
       }
     });
     playerDoc.querySelector('.rewind--active').addEventListener('click', () => {

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import transcript from "../../../data/transcript.js";
+import transcript from "../../data/transcript.js";
 import timeUpdate from "../time-update/index.js";
 import event from "../../event.js";
 const intialProgressbarState = 148;
