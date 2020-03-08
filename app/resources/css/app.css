@@ -241,7 +241,7 @@ audio{
 } */
 .container-bar {    
     overflow: hidden;
-    border-right:solid 1px #bfc6d2 ;
+    border-right:solid 2px #bfc6d2 ;
 }
 .bar-original .sound-wave-connector{
     border: solid 0.5px #98a3b5;
@@ -343,6 +343,10 @@ audio{
     padding-left: 3px;
     padding-right: 3px;
     border-radius: 5px;
+  }
+  .word.search-select {
+    background: yellow;
+    color: #141515;   
   }
   .convai-transcript:hover {
     background: #f2fafe;
