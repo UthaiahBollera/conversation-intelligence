@@ -218,7 +218,9 @@ audio{
     grid-template-columns: 7% 93%;
     grid-gap: 10px;    
     padding: 15px 10px;
-    width: 700px;    
+    width: 700px;  
+    padding-right: 15px;
+    width: 100%;
 }
 .convai-transcript.me {
     grid-template-columns: 2% 10% 90%;
@@ -237,6 +239,13 @@ audio{
 /* .convai-sound-bar .bar-progress .sound-wave-connector {    
     visibility: hidden;
 } */
+.container-bar {    
+    overflow: hidden;
+    border-right:solid 1px #354052 ;
+}
+.bar-original .sound-wave-connector{
+    border: solid 0.5px #98a3b5;
+}
 .convai-sound-bar .bar-progress {    
     margin-top: -10.9%;
     height: 100px;    
@@ -245,10 +254,10 @@ audio{
     background: #bec6d2;
 }
 .bar-progress .sound-wave-you {
-    
+    width: 888px;
 }
 .bar-progress .sound-wave-me {
-        
+    width: 888px;
 }
 
 #time-calc{
@@ -277,8 +286,7 @@ audio{
     margin-left: 1px;
     background: #8868e9;
     animation: sound 0ms -800ms linear infinite alternate;
-    transition: height 0.8s;
-    cursor: pointer;
+    transition: height 0.8s;    
     margin-left: 2px;
     vertical-align: middle;
   }
@@ -287,8 +295,7 @@ audio{
     opacity: 1;
     height: 35px;
   }
-  .sound-wave-connector{
-      width: 90%;      
+  .sound-wave-connector{       
       border: solid 1px #98a3b5;
   }
   .sound-wave-you .bar{

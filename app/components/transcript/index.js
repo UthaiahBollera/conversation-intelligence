@@ -19,8 +19,7 @@ class Trnascript {
     let youText = "", meText = "";
     const youTextParentEle = this.element.querySelector('.convai-transcript__text.you > div');
     const meTextParentEle = this.element.querySelector('.convai-transcript__text.me > div');
-    wordTimings.forEach((wording, index) => {
-      console.log(index);
+    wordTimings.forEach((wording, index) => {      
       if (index & 1) {//for odd conversation
         wording.forEach((time) => {
           if (time.word) {       
