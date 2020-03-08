@@ -1,3 +1,4 @@
+// @ts-nocheck
 import transcript from "../../../data/transcript.js";
 import timeUpdate from "../time-update/index.js";
 import event from "../../event.js";
@@ -21,8 +22,7 @@ class SoundBar {
     return Math.round((this.meSpokenLength / (this.meSpokenLength + this.youSpokenLength)) * 100);
   }
   
-  updateProgressbarWidth(progressWidth) {
-    console.log("progressbar width", progressWidth);
+  updateProgressbarWidth(progressWidth) {    
     this.eleDoc.querySelector('#bar-progress >.container-bar').style.width = progressWidth + "px";
   }
   generaterSoundBars() {
@@ -112,8 +112,7 @@ class SoundBar {
 </div>`;
     this.eleDoc.querySelector('#time-calc').innerHTML = new timeUpdate().render();
     this.eleDoc.addEventListener("click", (evt) => {
-      if (evt.target.className === "bar") {
-        console.log('triggered');
+      if (evt.target.className === "bar") {        
         let time = Number(evt.target.getAttribute('startTime').split('s')[0]);        
         let currentTime = Number(time).toFixed(2);        
         event.publish('setTimer', {
