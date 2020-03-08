@@ -1,18 +1,21 @@
 // @ts-nocheck
 import event from "../../event.js";
-
-const [PLAYING, PAUSE, COMPLETED] = [1, 2, 3];
-let [PLAYURL, PAUSEURL] = ['play.png', 'pause.png'];
-let status = COMPLETED;
+import { PLAY_IMGAE_URL, PAUSE_IMAGE_URL, PlayingStates } from "./constants.js";
+const [PLAYING, PAUSE, COMPLETED] = PlayingStates;
 
 class AudioPlayer {
   constructor () {
+    this.playerDoc = document.createElement('div');
+    this.playerDoc.className = "convai-player";
+    this.playerDoc.id = "convai-player";
+    
     this.player = null;
     this.togglePlayPause = this.togglePlayPause.bind(this);
     this.fastForward = this.fastForward.bind(this);
     this.rewind = this.rewind.bind(this);
+    this.status = COMPLETED;
     event.subscribe('setTimer', (time) => {
-      status = PLAYING;
+      this.status = PLAYING;
       this.player.currentTime = time.currentTime;
       this.player.play();
     });
@@ -41,37 +44,33 @@ class AudioPlayer {
   togglePlayPause() {
     let _player = this.player;
     if (_player.currentTime === _player.duration) {
-      status = COMPLETED;
+      this.status = COMPLETED;
     }
-    switch (status) {
+    switch (this.status) {
       case COMPLETED:
-        status = PLAYING;
+        this.status = PLAYING;
         _player.currentTime = 0;
         _player.play();
         break;
       case PLAYING:
-        status = PAUSE;
+        this.status = PAUSE;
         _player.pause();
         break;
       case PAUSE:
-        status = PLAYING;
+        this.status = PLAYING;
         _player.play();
         break;
     }
   };
 
-  setPlayURL(){
+  setPlayURL() {
     let ele = document.querySelector('img.play');
-    ele.src = "app/resources/images/" + PLAYURL;
+    ele.src = PLAY_IMGAE_URL;
   }
 
   render() {
     let _this = this;
-    let playerDoc = document.createElement('div');
-    playerDoc.className = "convai-player";
-    playerDoc.id = "convai-player";
-
-    playerDoc.innerHTML = `
+    this.playerDoc.innerHTML = `
     <div class="convai-player-rewind" id="convai-player-rewind">
       <img class="rewind--active" src="app/resources/images/rewind-active.svg" alt="rewind" />
       <img class="rewind" src="app/resources/images/rewind.svg" alt="rewind" />
@@ -86,10 +85,12 @@ class AudioPlayer {
     <audio controls id="audio-player">
       <source src="app/sounds/interation1.wav" type="audio/wav">
     </audio>`;
-    this.player = playerDoc.querySelector('#audio-player');
+    this.player = this.playerDoc.querySelector('#audio-player');
+    
     this.player.onloadeddata = () => {
       event.publish('onendtimechanged', this.player.duration);
     };
+
     this.player.onended = () => {
       this.setPlayURL();
     };
@@ -100,29 +101,29 @@ class AudioPlayer {
         duration: this.player.duration
       });
     };
-    playerDoc.querySelector('#convai-player-forward').addEventListener('click', () => {
+    this.playerDoc.querySelector('#convai-player-forward').addEventListener('click', () => {
       _this.fastForward();
     });
-    playerDoc.querySelector('#convai-player-rewind').addEventListener('click', () => {
+    this.playerDoc.querySelector('#convai-player-rewind').addEventListener('click', () => {
       _this.rewind();
     });
-    playerDoc.querySelector(".convai-player-play").addEventListener('click', () => {
+    this.playerDoc.querySelector(".convai-player-play").addEventListener('click', () => {
       _this.togglePlayPause();
       let ele = document.querySelector('img.play');
       let [PLAYURL, PAUSEURL] = ['play.png', 'pause.png'];
       if (ele.src.indexOf(PLAYURL) > 0) {
-        ele.src = "app/resources/images" + PAUSEURL;
+        ele.src = PAUSE_IMAGE_URL;
       } else {
-        ele.src = "app/resources/images" + PLAYURL;
+        ele.src = PLAY_IMGAE_URL;
       }
     });
-    playerDoc.querySelector('.rewind--active').addEventListener('click', () => {
+    this.playerDoc.querySelector('.rewind--active').addEventListener('click', () => {
       _this.rewind;
     });
-    playerDoc.querySelector('.forward--active').addEventListener('click', () => {
+    this.playerDoc.querySelector('.forward--active').addEventListener('click', () => {
       _this.fastForward;
     });
-    return playerDoc;
+    return this.playerDoc;
   }
 }
 export default new AudioPlayer();
