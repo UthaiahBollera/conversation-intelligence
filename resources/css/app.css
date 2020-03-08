@@ -230,7 +230,25 @@ audio{
 }
 
 .convai-sound-bar {
+    
     padding: 20px;
+    position: relative;
+}
+/* .convai-sound-bar .bar-progress .sound-wave-connector {    
+    visibility: hidden;
+} */
+.convai-sound-bar .bar-progress {    
+    margin-top: -10.9%;
+    height: 100px;    
+}
+.convai-sound-bar .bar-progress .bar{
+    background: #bec6d2;
+}
+.bar-progress .sound-wave-you {
+    
+}
+.bar-progress .sound-wave-me {
+        
 }
 
 #time-calc{
@@ -252,26 +270,22 @@ audio{
     flex-direction: column;    
   }
   
-  .sound-wave {
-    width: 250px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-  }
   .sound-wave .bar {
-    display: block;
-    width: 3px;
+    display: inline-block;
+    width: 2px;
     height: 30px;
     margin-left: 1px;
     background: #8868e9;
     animation: sound 0ms -800ms linear infinite alternate;
     transition: height 0.8s;
     cursor: pointer;
+    margin-left: 2px;
+    vertical-align: middle;
   }
   
   .sound-wave {
     opacity: 1;
-    height: 46px;
+    height: 35px;
   }
   .sound-wave-connector{
       width: 90%;      
@@ -283,6 +297,9 @@ audio{
   .sound-wave-me, .sound-wave-you{
     display: grid;
     grid-template-columns: 0.2fr 1fr;
+  }
+  .sound-wave-you #wave{
+    margin-top: 5px;
   }
   .sound-wave-me{
       margin-top: 20px;

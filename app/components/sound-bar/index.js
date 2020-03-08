@@ -10,7 +10,7 @@ class SoundBar {
     let youbars = "";
     let meBars = "";
     transcript.word_timings.forEach((words, wordIndex) => {
-      if ((wordIndex & 1)) {//even bars        
+      if (!(wordIndex & 1)) {//even bars        
         console.log("even", words, marginLeft);
         for (var evenIndex = 0; evenIndex < words.length; evenIndex++) {
           let time = words[evenIndex];
@@ -31,6 +31,7 @@ class SoundBar {
     eleDoc.className = "convai-sound-bar";
     eleDoc.innerHTML = `<div id="time-calc">              
 </div>
+<div class="bar-original">
 <div class="sound-wave-me">
     <div class="conv-percentage you">
         54% You
@@ -55,7 +56,36 @@ class SoundBar {
             </div>
           </div>
     </div>
-</div>`;
+    </div>    
+</div>
+
+<div class="bar-progress">
+<div class="sound-wave-me">
+    <div class="conv-percentage you">        
+    </div>
+    <div id="wave">
+        <div class='sound-icon '>
+            <div class='sound-wave'>
+              ${youbars}
+            </div>
+          </div>
+    </div>
+</div>
+<div class="sound-wave-connector"></div>
+<div class="sound-wave-you">
+    <div class="conv-percentage me">        
+    </div>
+    <div id="wave">
+        <div class='sound-icon'>
+            <div class='sound-wave'>
+              ${meBars}
+            </div>
+          </div>
+    </div>
+    </div>    
+</div>
+
+`;
     eleDoc.querySelector('#time-calc').innerHTML = new timeUpdate().render();
     eleDoc.querySelector('.sound-wave').addEventListener("click", (evt) => {
       if (evt.target.className === "bar") {
