@@ -314,7 +314,7 @@ audio{
     color: black;
   }
 
-  .word:hover {
+  .word:hover, .word.search-select {
     background: #bde0fb;
     padding-left: 3px;
     padding-right: 3px;
