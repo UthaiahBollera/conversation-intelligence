@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Conversation Intelligence</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="./resources/css/font-awesome.css" crossorigin="anonymous">
   <link rel="stylesheet" href="./resources/css/font-awesome.css" />
   <link rel="stylesheet" href="./resources/css/app.css" />
@@ -15,17 +14,12 @@
 <body>
   <div id="app">
   </div>
-  <div class="convai">
-    <div class="convai-container">
-      <div class="convai-row" id='player'>        
-      </div>
-      <div class="convai-row" id="sound-bar">        
-      </div>
-      <div class="convai-row" id="search-transcript">
-      </div>      
-    </div>
-  </div>
   <script type="module" src="./app/app.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      new App("app");
+    });
+  </script>
 </body>
 
 </html>
